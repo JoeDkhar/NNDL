@@ -17,4 +17,4 @@ streamlit run program_name.py
 ## Course Information
 - **Course:** MCA572 - Neural Networks and Deep Learning
 - **Student:** Josaiah
-- **Year:** 2024
+- **Year:** 2025
