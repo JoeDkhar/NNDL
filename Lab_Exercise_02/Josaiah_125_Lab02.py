@@ -219,6 +219,35 @@ if st.button("📊 Compare All Activation Functions"):
     
     # Display comparison
     st.subheader("Comparison Results")
+    
+    # Create bar chart
+    fig, ax = plt.subplots(figsize=(10, 5))
+    names = [r[0] for r in results]
+    accuracies = [r[1] for r in results]
+    
+    # Create bars with different colors
+    bars = ax.bar(names, accuracies)
+    
+    # Customize the chart
+    ax.set_title('Activation Functions Performance Comparison')
+    ax.set_xlabel('Activation Function')
+    ax.set_ylabel('Average Accuracy (%)')
+    ax.set_ylim(0, 100)  # Set y-axis from 0 to 100%
+    
+    # Add value labels on top of each bar
+    for bar in bars:
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2., height,
+                f'{height:.1f}%',
+                ha='center', va='bottom')
+    
+    # Add grid for better readability
+    ax.grid(True, alpha=0.3, axis='y')
+    
+    # Display the chart
+    st.pyplot(fig)
+    
+    # Display text results
     for name, accuracy in results:
         st.write(f"**{name}**: {accuracy:.1f}% average accuracy")
     
@@ -226,13 +255,3 @@ if st.button("📊 Compare All Activation Functions"):
     best_activation = max(results, key=lambda x: x[1])
     st.success(f"🏆 Best performer: {best_activation[0]} with {best_activation[1]:.1f}% accuracy")
 
-# === Footer ===
-st.markdown("---")
-st.info("""
-**Lab Requirements Completed:**
-✅ Implemented Step, Binary Sigmoid, Bipolar Sigmoid, Tanh, and ReLU functions  
-✅ Visualized all activation functions  
-✅ Created simple neural network with hidden layer  
-✅ Trained on XOR binary classification problem  
-✅ Compared performance across activation functions  
-""")
