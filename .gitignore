@@ -60,3 +60,17 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# dataset
+cifar_data/
+seg_pred/
+seg_test/
+seg_train/
+
+#models
+best_model.h5
+confusion_matrix.png
+dataset_samples.png
+intel_image_classifier_final.h5
+sample_predictions.png
+training_history.png
